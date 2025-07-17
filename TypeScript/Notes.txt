@@ -1,0 +1,26 @@
+DataTypes in TypeScript
+***********************
+
+1) Primitive DataTypes
+    String
+    Number
+    Boolean
+    Undefined
+    Null
+    Never
+    Unknown 
+    void
+
+2) special DataType
+    any
+
+3) user defined DataTypes
+    class
+    function
+    tuple
+    enum
+    interfaces
+    array
+
+function
+1) named function or function declration
