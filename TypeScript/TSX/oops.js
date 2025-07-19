@@ -1,7 +1,7 @@
 /*
 oops => class, object, inheritance, polymorphism, encapsulation, abstraction
 
-class => 
+class =>
     collection of "variables and functions" called as class
                             (or)
     encapsulation of variable and function called as class
@@ -31,7 +31,21 @@ class class_one {
 let obj: class_one = new class_one();
 console.log(obj.var_one, obj.fun_one());
 */
-
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /*
 class class_one {
   private var_one: string = "hello";
@@ -43,7 +57,6 @@ class class_one {
 let obj: class_one = new class_one();
 console.log(obj.fun_one());
 */
-
 /*
 class class_one {
   sub_one: string;
@@ -59,7 +72,6 @@ class class_one {
 let obj: class_one = new class_one();
 console.log(obj.sub_one, obj.sub_two, obj.sub_three);
 */
-
 /*
 class class_one {
     sub_one:string;
@@ -74,7 +86,6 @@ class class_one {
 
 let obj1:class_one = new class_one("ReactJS", "NodeJS", "MongoDB")
 */
-
 /*
 class class_one {
   private var_one: any;
@@ -100,7 +111,6 @@ class class_one {
 let obj: class_one = new class_one("VueJS", "reactjs", "nextjs");
 console.log(obj.fun_one(), obj.fun_two(), obj.fun_three());
 */
-
 /*
 class class_one {
   constructor(public arg1: any) {}
@@ -111,7 +121,6 @@ console.log(obj.arg1);
 
 note : we can access "public arguments  of constructor" with class "Objects"
 */
-
 // Inheritance
 // Getting the data from parent class to child class called as inheritance
 // we will implement Inheritance with the help of "extends" keyword
@@ -120,7 +129,6 @@ note : we can access "public arguments  of constructor" with class "Objects"
 // 3) Multiple inheritance
 // 4) Hierarchical inheritance
 // 5) Hybrid inheritance
-
 /*
 // Single Level Inheritance
 class Parent {
@@ -143,7 +151,6 @@ console.log(p1.var_one);
 let c1: Child = new Parent();
 // Property  'var_two us missing in type 'Parent' but required in type 'Child'.
 */
-
 /*
 // 2. Multi level inheritance
 class Parent {
@@ -167,7 +174,6 @@ class Subchild extends Child {
 let obj: Subchild = new Subchild();
 console.log(obj.fun_one(), obj.func_two(), obj.func_three());
 */
-
 /*
 // Multiple Inheritance
 class Parent1{}
@@ -175,7 +181,6 @@ class Parent2{}
 class Child extends Parent1, parent2{}
 // Multiple inheritance not supported by Typescript
 */
-
 /*
 // Hierarchical inheritance
 
@@ -204,7 +209,6 @@ console.log(obj1.var_one, obj1.var_three);
 let obj2: Child3 = new Child3();
 console.log(obj2.var_one, obj2.var_four);
 */
-
 /*
 // Hybrid inheritance
 class Parent{}
@@ -213,10 +217,9 @@ class Child2 extends Parent{}
 class subChild extends Child1, child2{}
 // NOTE : Hybrid Ing=heritance is not supported by TypeScript
 */
-
 /*
 
-  interfaces => 
+  interfaces =>
   **********
               when ever we know only declarations, but wo dont know implementation the we will choose interfaces
               we will create interfaces with "interface" keyword
@@ -225,7 +228,6 @@ class subChild extends Child1, child2{}
 
 
 */
-
 /*
 interface interface1 {
   var_one: string;
@@ -238,7 +240,6 @@ class class_one implements interface1 {
 let obj: class_one = new class_one();
 console.log(obj.var_one);
 */
-
 /*
 interface interface1 {
   var_one: string;
@@ -250,7 +251,6 @@ let obj: interface1 = {
 
 console.log(obj.var_one);
 */
-
 /*
 interface interface1 {
   sub_one: string;
@@ -289,7 +289,6 @@ obj.func_one();
 obj.func_two();
 obj.func_three();
 */
-
 /*
 interface interface1 {
   var_one: string;
@@ -305,7 +304,6 @@ let obj: interface2 = {
 
 console.log(obj.var_one, obj.var_two);
 */
-
 /*
 interface interface1 {
   var_one: string;
@@ -327,7 +325,6 @@ let obj: interface3 = {
 
 console.log(obj.var_one, obj.var_two, obj.var_three);
 */
-
 /*
 interface interface1 {
   fun_one(): number;
@@ -355,7 +352,6 @@ let obj: interface3 = {
 
 console.log(obj.fun_one(), obj.fun_two(), obj.fun_three());
 */
-
 /*
 
 
@@ -367,7 +363,6 @@ abstract classes
 
       implementations provided by child classes
 */
-
 /*
 abstract class class_one {
   func_one(): void {
@@ -387,7 +382,6 @@ let obj: class_two = new class_two();
 obj.func_one();
 obj.func_two();
 */
-
 /*
 abstract class class_one {
   func_one(): string {
@@ -414,13 +408,11 @@ class class_three extends class_two {
 let obj: class_three = new class_three();
 console.log(obj.func_one(), obj.func_two(), obj.func_three());
 */
-
 /*
 abstract class class_one {}
 let obj: class_one = new class_one();
 // Note: we cant create object to the abstract classes and interface
 */
-
 /*
 interface interface1 {
   func_one: any;
@@ -443,18 +435,15 @@ class class_two extends class_one {
 let obj: class_two = new class_two();
 console.log(obj.func_one(), obj.func_two());
 */
-
 /*
 interface interface1{}
 let obj:interface1 = new interface1();
 // Note : we can't create object to the interfaces also
 */
-
 // modifiers
 // 1) public
 // 2) private
 // 3) protected
-
 // public
 // public modifier applicables to the variable, function and constructor
 // we can access public member by using class objects
@@ -475,3 +464,245 @@ let obj: class_two = new class_two();
 
 console.log(obj.func_one());
 */
+/*
+// Private
+// Private modifier applicable to variables, functions and constructors
+// we can't create object to the "private constructor" class
+// we can't access private members with class objects
+// private member wont accessable to child classes
+
+class class_one {
+  private var_one: string = "Hello";
+  private func_one(): string {
+    return "Welcome";
+  }
+}
+
+let obj: class_one = new class_one();
+// obj.var_one;
+// Property 'var_one' is private and only accessible within 'class_one'.
+
+// obj.func_one();
+// Property 'func_one' is private and only accessible within 'class_one'.
+*/
+/*
+class class_one {
+  private var_one: string = "Hello";
+}
+
+class class_two extends class_one {}
+
+let obj: class_two = new class_two();
+// obj.var_one;
+//Property 'Var_one' is private and only accessible within class 'class_one'
+*/
+/*
+class class_one{
+  private constructor(){}
+}
+
+let obj:class_one = new class_one();
+// Constructor of class 'class_one' is private and only accessible within the class declaration
+*/
+/*
+class class_one {
+  private var_one: string = "Hello";
+  public var_two: string = this.var_one;
+
+  private func_one(): any {
+    return "Welcome";
+  }
+
+  public func_two(): any {
+    return this.func_one();
+  }
+}
+
+class class_two extends class_one {}
+let obj: class_two = new class_two();
+console.log(obj.var_two);
+console.log(obj.func_two());
+*/
+// Protected
+// Protected modifier also applicable to variable, function ans constructor
+// Protectd member available to child classes
+// Protected member we can't access class objects
+// we can't create object to protected constructor class
+/*
+class class_one {
+  protected var_one: string = "Hello";
+  protected func_one(): any {
+    return "Welcome";
+  }
+}
+
+let obj: class_one = new class_one();
+obj.var_one;
+// Property 'var_one' is protected and only accessible within class 'class_one' and its subclasses.
+obj.func_one();
+// Property 'func_one' is protected and only accessible within class 'class_one' and its subclasses
+*/
+/*
+class class_one {
+  protected constructor() {}
+}
+
+let obj: class_one = new class_one();
+// Constructor of class 'class_one' is protected and only accessible within the class declaration.
+*/
+/*
+class class_one {
+  protected var_one: string = "Hello";
+}
+
+class class_two extends class_one {
+  public var_two: string = this.var_one;
+}
+
+let obj: class_two = new class_two();
+console.log(obj.var_two);
+*/
+/*
+
+              public            private           protected
+variable,
+functions,    applicable        applicable        applicable
+contructor
+
+accessable
+to child      yes               no                yes
+class
+
+
+access
+with        we can access       no                no
+objects
+
+constructor we can create object  we can't       we can't create
+                                  create
+
+                              
+*/
+// polymorphism
+// behaves like many called as polymorphism
+// 1) function overriding
+// 2) function overloading
+// function overriding
+// overriding parent class functionality with child class functionality called as function overriding
+/*
+class Parent {
+  dbFunc(): string {
+    return "Data fromoracle database soon";
+  }
+}
+
+class Child extends Parent {
+  dbFunc(): string {
+    return "Data from mongodb soon";
+  }
+}
+
+let obj: Child = new Child();
+let obj1: Parent = new Parent();
+console.log(obj.dbFunc());
+console.log(obj1.dbFunc());
+
+// NOTE: to implement function overriding inheritance is mandatory
+// NOTE: Both parent class an child class should containes same function1
+*/
+/*
+// Function overloading
+// same function name and same number of parametres but different datatypes
+class class_one {
+  func_one(param1: string, param2: string): void;
+  func_one(param1: number, param2: number): void;
+  func_one(param1: string, param2: number): void;
+  func_one(param1: any, param2: any): void {
+    console.log(param1, param2);
+  }
+}
+
+let obj: class_one = new class_one();
+obj.func_one(12, 32);
+
+// NOTE: to implement function overloading, we dont require inheritance
+*/
+// Static keyword
+// Static modifier applicable to "variable and functions"
+// static members we can access directly by using "class name"
+// we can't refer static member by using this keyword
+// we'cant intialize static members with constructor
+// we can't access static members  with class objects
+/*
+class class_one {
+  static var_one: string;
+  constructor() {
+    // this.var_one = "Hello";
+  }
+}
+*/
+/*
+class class_one {
+  static var_one: string = "Hello";
+}
+
+let obj: class_one = new class_one();
+obj.var_one;
+// Property 'var_one' does not exist on type 'class_one'. Did you mean to access the static member 'class_one.var_one' instead?
+*/
+/*
+class class_one {
+  static var_one: string = "Hello";
+  static func_one(): any {
+    return "Welcome";
+  }
+}
+
+console.log(class_one.var_one);
+console.log(class_one.func_one());
+*/
+// readonly
+// readonly is the keyword in Typescript
+// readonly is used to "read" the content but we can't "update" the content
+// we can intialize readonly member with constructor
+/*
+class class_one {
+  readonly var_one: string;
+  constructor() {
+    this.var_one = "Hello";
+  }
+}
+
+let obj: class_one = new class_one();
+console.log(obj.var_one);
+// obj.var_one = "Welcome";
+// Cannot assign to 'var_one' because it is a read-only property.
+*/
+// Super
+// super keyword used to call the Parent class member
+// super keyword applicable to "constructor" and "functions"
+var Parent = /** @class */ (function () {
+    function Parent(arg1) {
+        this.arg1 = arg1;
+    }
+    Parent.prototype.func_one = function () {
+        return "Hello";
+    };
+    return Parent;
+}());
+var Child = /** @class */ (function (_super) {
+    __extends(Child, _super);
+    function Child(param1, param2) {
+        var _this = _super.call(this, param1) || this;
+        _this.param1 = param1;
+        _this.param2 = param2;
+        return _this;
+    }
+    Child.prototype.func_two = function () {
+        return _super.prototype.func_one.call(this);
+    };
+    return Child;
+}(Parent));
+var obj = new Child("Hello_1", "Hello_2");
+console.log(obj.arg1, obj.param1, obj.param2);
+console.log(obj.func_two());
