@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a;
+  font-family: "Segoe UI", sans-serif;
+  color: #f8fafc;
+}
+
+.app {
+  max-width: 500px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.range-section {
+  margin-bottom: 20px;
+}
+
+.control-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.control-section input[type="number"] {
+  width: 80px;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: 2px solid #334155;
+  background-color: #1e293b;
+  color: #f8fafc;
+  text-align: center;
+}
+
+button {
+  padding: 10px 16px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+.reset-button {
+  margin-top: 20px;
+  background-color: #f59e0b;
+}
+
+.reset-button:hover {
+  background-color: #d97706;
+}
+
+.output {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}

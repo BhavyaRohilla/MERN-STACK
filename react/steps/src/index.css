@@ -1,0 +1,70 @@
+.app {
+  font-family: sans-serif;
+  padding: 2rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.steps-container {
+  border: 2px solid #7950f2;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.step-indicators {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.step-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-number.active {
+  background-color: #7950f2;
+  color: white;
+  border-color: #7950f2;
+}
+
+.step-message {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.step-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-btn {
+  background-color: #7950f2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.nav-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
