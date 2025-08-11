@@ -3,9 +3,10 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import Steps from "./Steps";
 import Flashcards from "./Flashcards";
+import NestedFaq from "./NestedFaq";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Flashcards />
+    <NestedFaq />
   </StrictMode>
 );
