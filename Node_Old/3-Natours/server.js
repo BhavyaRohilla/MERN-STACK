@@ -1,9 +1,12 @@
 const dotenv = require('dotenv');
-dotenv.config();
 const app = require('./app');
 
-const port = process.env.PORT || 3000;
+// sabse upar config call karna
+dotenv.config();
 
-app.listen(port, () => {
-  console.log(`App running on port ${port} in ${process.env.NODE_ENV} mode...`);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
+  console.log(`🚀 Server running on port ${PORT}`);
 });
