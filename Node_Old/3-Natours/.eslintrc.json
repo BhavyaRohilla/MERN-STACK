@@ -4,17 +4,17 @@
     "es2021": true
   },
   "extends": ["airbnb-base", "plugin:node/recommended", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "import"],
   "rules": {
     "prettier/prettier": "error",
 
     // Common relaxations for backend
-    "no-console": "off", // backend me console.log debugging ke liye allow
+    "no-console": "off", // console.log allow for backend debugging
     "no-process-exit": "off",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
 
-    // Code style
+    // Code style relaxations
     "func-names": "off",
     "object-shorthand": "off",
     "consistent-return": "off",
@@ -26,7 +26,34 @@
     // Express ke liye req, res, next ignore
     "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }],
 
-    // Recommended
-    "prefer-destructuring": ["error", { "object": true, "array": false }]
+    // Recommended for readability
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
+
+    // --- Import rules ---
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/test.js",
+          "**/tests/**",
+          "**/*.test.js",
+          "**/*.spec.js"
+        ],
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      { "js": "never", "mjs": "never", "ts": "never" }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".json", ".ts"]
+      }
+    }
   }
 }
