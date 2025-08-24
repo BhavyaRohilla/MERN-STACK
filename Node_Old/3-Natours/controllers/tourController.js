@@ -1,5 +1,5 @@
 const Tour = require('../models/tourModel');
-const APIFeatures = require('./../utils/apiFeatures');
+const APIFeatures = require('../utils/apiFeatures');
 
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
@@ -8,7 +8,6 @@ exports.aliasTopTours = (req, res, next) => {
   next();
 };
 
-// Get all tours
 exports.getAllTours = async (req, res) => {
   try {
     // EXECUTE QUERY
@@ -19,9 +18,10 @@ exports.getAllTours = async (req, res) => {
       .paginate();
     const tours = await features.query;
 
+    // SEND RESPONSE
     res.status(200).json({
       status: 'success',
-      result: tours.length,
+      results: tours.length,
       data: {
         tours,
       },
@@ -34,10 +34,10 @@ exports.getAllTours = async (req, res) => {
   }
 };
 
-// Tour By Id
 exports.getTour = async (req, res) => {
   try {
     const tour = await Tour.findById(req.params.id);
+    // Tour.findOne({ _id: req.params.id })
 
     res.status(200).json({
       status: 'success',
@@ -53,7 +53,27 @@ exports.getTour = async (req, res) => {
   }
 };
 
-// update the tour (still dummy - update logic add karna hai)
+exports.createTour = async (req, res) => {
+  try {
+    // const newTour = new Tour({})
+    // newTour.save()
+
+    const newTour = await Tour.create(req.body);
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        tour: newTour,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
 exports.updateTour = async (req, res) => {
   try {
     const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
@@ -91,27 +111,6 @@ exports.deleteTour = async (req, res) => {
   }
 };
 
-exports.createTour = async (req, res) => {
-  try {
-    // const newTour = new Tour({})
-    // newTour.save();
-
-    const newTour = await Tour.create(req.body);
-
-    res.status(201).json({
-      status: 'success',
-      data: {
-        tour: newTour,
-      },
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
-
 exports.getTourStats = async (req, res) => {
   try {
     const stats = await Tour.aggregate([
@@ -121,7 +120,7 @@ exports.getTourStats = async (req, res) => {
       {
         $group: {
           _id: { $toUpper: '$difficulty' },
-          num: { $sum: 1 },
+          numTours: { $sum: 1 },
           numRatings: { $sum: '$ratingsQuantity' },
           avgRating: { $avg: '$ratingsAverage' },
           avgPrice: { $avg: '$price' },
@@ -133,9 +132,10 @@ exports.getTourStats = async (req, res) => {
         $sort: { avgPrice: 1 },
       },
       // {
-      //   $match: { _id: { $ne: 'EASY' } },
-      // },
+      //   $match: { _id: { $ne: 'EASY' } }
+      // }
     ]);
+
     res.status(200).json({
       status: 'success',
       data: {
@@ -143,7 +143,60 @@ exports.getTourStats = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(400).json({
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+exports.getMonthlyPlan = async (req, res) => {
+  try {
+    const year = req.params.year * 1; // 2021
+
+    const plan = await Tour.aggregate([
+      {
+        $unwind: '$startDates',
+      },
+      {
+        $match: {
+          startDates: {
+            $gte: new Date(`${year}-01-01`),
+            $lte: new Date(`${year}-12-31`),
+          },
+        },
+      },
+      {
+        $group: {
+          _id: { $month: '$startDates' },
+          numTourStarts: { $sum: 1 },
+          tours: { $push: '$name' },
+        },
+      },
+      {
+        $addFields: { month: '$_id' },
+      },
+      {
+        $project: {
+          _id: 0,
+        },
+      },
+      {
+        $sort: { numTourStarts: -1 },
+      },
+      {
+        $limit: 12,
+      },
+    ]);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        plan,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
       status: 'fail',
       message: err,
     });
